@@ -135,9 +135,10 @@
   .err{color:#d9534f;font-size:.82rem;margin-top:5px;display:none}
   .form-card .btn{width:100%;justify-content:center;font-size:1.08rem;padding:16px}
   .form-note{font-size:.82rem;color:var(--gray);text-align:center;margin-top:12px}
-  .trust4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px;margin:28px auto 0}
-  .trust4 div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;font-size:.85rem;font-weight:600;color:var(--green-deep)}
-  .trust4 .t{font-size:1.2rem;margin-bottom:4px}
+  .trust4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px;margin:28px auto 0}
+  .trust4 .tb{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-align:center;font-size:.85rem;font-weight:700;color:var(--green-deep);box-shadow:var(--shadow)}
+  .trust4 .tb img{width:100%;height:110px;object-fit:cover;object-position:center;display:block}
+  .trust4 .tb span{display:block;padding:11px 10px}
   .form-msg{display:none;text-align:center;padding:30px 10px}
   .form-msg .check{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
   .form-msg h3{font-size:1.4rem;margin-bottom:8px}
@@ -446,10 +447,10 @@
     <h2 class="sec-title" style="margin-top:14px">지금 바로 파일럿을 신청하세요</h2>
     <p class="sec-lead">일부 농가에 먼저 적용해 효과를 확인하고, 그 다음에 결정하세요.<br />아래 정보를 남겨주시면 <b>영업일 1일 내</b> 담당자가 직접 연락드립니다.</p>
     <div class="trust4">
-      <div><div class="t">💰</div>초기 비용 없음</div>
-      <div><div class="t">⚡</div>영업일 1일 내 연락</div>
-      <div><div class="t">🔄</div>부담 없는 중단 가능</div>
-      <div><div class="t">🔒</div>데이터 보안 준수</div>
+      <div class="tb"><img src="assets/device_fm05c.webp" alt="IoT 센서 기기 — 초기 비용 없음" loading="lazy" /><span>초기 비용 없음</span></div>
+      <div class="tb"><img src="assets/app_alert.webp" alt="빠른 알림 — 영업일 1일 내 연락" loading="lazy" /><span>영업일 1일 내 연락</span></div>
+      <div class="tb"><img src="assets/app_dashboard.webp" alt="대시보드 — 부담 없는 중단 가능" loading="lazy" /><span>부담 없는 중단 가능</span></div>
+      <div class="tb"><img src="assets/app_detail.webp" alt="상세 데이터 — 데이터 보안 준수" loading="lazy" /><span>데이터 보안 준수</span></div>
     </div>
   </div>
 
