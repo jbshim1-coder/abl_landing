@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>마이피드 | 사료빈 잔량으로 당일 주문 줄이는 운영 개선 솔루션 — 에임비랩</title>
+<meta name="description" content="사료빈 잔량 데이터로 부족 가능 농가를 미리 파악해 당일·긴급 주문을 줄이고 배송을 계획하세요. 마이피드 파일럿 신청 안내." />
+<meta property="og:title" content="마이피드 | 당일 주문을 줄이고, 사료 배송을 미리 계획하세요" />
+<meta property="og:description" content="잔량 데이터 기반 사료 운영 개선 솔루션. 일부 농가에 먼저 적용해 효과를 검증하세요." />
+<meta property="og:image" content="assets/app_dashboard.webp" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="assets/logo_myfeed.png" type="image/png" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<style>
+  :root{
+    --green:#87B570; --green-deep:#3F6B33; --green-light:#B7D2A9;
+    --mist:#EDF4E7; --ink:#1F2A22; --gray:#5E6B61; --line:#E2EADb;
+    --radius:16px; --shadow:0 6px 24px rgba(63,107,51,.10); --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;color:var(--ink);line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:700;
+    padding:15px 26px;border-radius:12px;border:none;cursor:pointer;font-size:1.02rem;transition:.2s;box-shadow:0 4px 14px rgba(135,181,112,.4)}
+  .btn:hover{background:var(--green-deep);transform:translateY(-1px)}
+  .btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+  .btn-ghost{background:#fff;color:var(--green-deep);border:1.5px solid var(--green)}
+  .btn-ghost:hover{background:var(--mist);color:var(--green-deep)}
+  .eyebrow{display:inline-block;background:var(--mist);color:var(--green-deep);font-weight:700;font-size:.82rem;
+    padding:7px 14px;border-radius:999px;letter-spacing:.01em}
+  section{padding:76px 0}
+  .sec-mist{background:var(--mist)}
+  h2.sec-title{font-size:clamp(1.5rem,3.6vw,2.2rem);font-weight:800;line-height:1.3;letter-spacing:-.02em;color:var(--ink)}
+  .sec-lead{color:var(--gray);font-size:1.05rem;margin-top:14px;max-width:760px}
+  .center{text-align:center} .center .sec-lead{margin-left:auto;margin-right:auto}
+
+  /* Header */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green-deep);font-size:1.15rem}
+  .nav-logo img{height:26px;width:auto}
+  .nav .btn{padding:11px 20px;font-size:.95rem}
+
+  /* Hero */
+  .hero{background:linear-gradient(180deg,#fff 0%,var(--mist) 100%);padding:64px 0 72px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(2rem,5vw,3.05rem);font-weight:800;line-height:1.22;letter-spacing:-.03em;margin:20px 0}
+  .hero h1 .hl{color:var(--green-deep)}
+  .hero p.sub{font-size:1.1rem;color:#3c463e;max-width:560px}
+  .effbar{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+  .eff{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:700;font-size:.92rem;color:var(--green-deep)}
+  .eff b{font-size:1.05rem}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .cta-sub{font-size:.86rem;color:var(--gray);margin-top:12px}
+  .hero-visual{position:relative;display:flex;justify-content:center}
+  .phone{width:280px;border-radius:34px;box-shadow:0 24px 60px rgba(63,107,51,.22);border:1px solid var(--line)}
+
+  /* Trust strip */
+  .trust{background:var(--green-deep);color:#fff;padding:18px 0}
+  .trust .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;justify-content:center;text-align:center;font-weight:600;font-size:.96rem}
+  .trust .dot{color:var(--green-light)}
+
+  /* Domino */
+  .domino{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+  .dom{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;position:relative}
+  .dom .step{font-size:.78rem;font-weight:800;color:var(--green);letter-spacing:.05em}
+  .dom h4{margin:8px 0 6px;font-size:1.04rem}
+  .dom p{font-size:.9rem;color:var(--gray)}
+  .dom:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--green-light);font-weight:800;z-index:2}
+
+  /* Cards grid */
+  .grid{display:grid;gap:18px;margin-top:36px}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow)}
+  .card .ico{width:46px;height:46px;border-radius:12px;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.4rem}
+  .card h4{font-size:1.1rem;margin-bottom:8px}
+  .card p{font-size:.94rem;color:var(--gray)}
+  .num{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+
+  /* Solution steps */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+  .stp{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px}
+  .stp .num{margin-bottom:12px}
+  .stp h4{font-size:1rem;margin-bottom:6px}
+  .stp p{font-size:.88rem;color:var(--gray)}
+
+  /* feature with image */
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+  .feat .card .shot{border-radius:12px;border:1px solid var(--line);margin-bottom:14px;width:100%;height:170px;object-fit:cover;object-position:top}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+  .gal{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);text-align:center}
+  .gal img{border-radius:10px;margin:0 auto 10px;max-height:300px;width:auto}
+  .gal span{font-size:.85rem;color:var(--gray);font-weight:600}
+
+  /* site/install */
+  .install{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center;margin-top:30px}
+  .install img.site{border-radius:var(--radius);box-shadow:var(--shadow);width:100%;height:360px;object-fit:cover}
+  .install .device{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:center;box-shadow:var(--shadow)}
+  .install .device img{margin:0 auto 12px;max-height:200px;width:auto}
+
+  /* pilot */
+  .pilot-flow{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .pf{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px}
+  .pf .num{margin-bottom:10px}
+  .pf h4{font-size:.98rem;margin-bottom:4px}
+  .pf p{font-size:.85rem;color:var(--gray)}
+  .fit{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px;margin-top:24px}
+  .fit h4{margin-bottom:14px;color:var(--green-deep)}
+  .fit ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+  .fit li{position:relative;padding-left:28px;font-size:.96rem;color:#3c463e}
+  .fit li::before{content:"✓";position:absolute;left:0;top:0;color:var(--green);font-weight:800;background:var(--mist);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem}
+
+  /* form */
+  #apply{background:linear-gradient(180deg,var(--mist) 0%,#fff 100%)}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 16px 48px rgba(63,107,51,.12);max-width:640px;margin:34px auto 0;padding:36px 34px}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-weight:700;font-size:.92rem;margin-bottom:7px}
+  .field label .req{color:#d9534f;margin-left:3px}
+  .field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:13px 14px;font-size:1rem;font-family:inherit;transition:.15s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(135,181,112,.18)}
+  .field input.invalid,.field textarea.invalid{border-color:#d9534f}
+  .field textarea{min-height:96px;resize:vertical}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .agree{display:flex;align-items:flex-start;gap:9px;font-size:.9rem;color:var(--gray);margin:6px 0 18px}
+  .agree input{margin-top:4px;width:18px;height:18px;min-width:18px;cursor:pointer;accent-color:var(--green)}
+  .err{color:#d9534f;font-size:.82rem;margin-top:5px;display:none}
+  .form-card .btn{width:100%;justify-content:center;font-size:1.08rem;padding:16px}
+  .form-note{font-size:.82rem;color:var(--gray);text-align:center;margin-top:12px}
+  .trust4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:760px;margin:28px auto 0}
+  .trust4 div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center;font-size:.85rem;font-weight:600;color:var(--green-deep)}
+  .trust4 .t{font-size:1.2rem;margin-bottom:4px}
+  .form-msg{display:none;text-align:center;padding:30px 10px}
+  .form-msg .check{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  .form-msg h3{font-size:1.4rem;margin-bottom:8px}
+  .form-msg p{color:var(--gray)}
+  .hp{position:absolute;left:-9999px;opacity:0}
+
+  /* footer */
+  footer{background:#26331F;color:#cdd8c5;padding:54px 0 40px;font-size:.94rem}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start}
+  footer .flogo{height:30px;margin-bottom:16px;filter:brightness(0) invert(1)}
+  footer h4{color:#fff;font-size:1.05rem;margin-bottom:10px}
+  footer .info p{margin-bottom:5px}
+  footer a{color:var(--green-light)}
+  .qrbox{background:#fff;border-radius:14px;padding:14px;width:130px;text-align:center}
+  .qrbox img{width:100px;height:100px;margin:0 auto 6px}
+  .qrbox span{font-size:.72rem;color:#333}
+  .foot-bottom{border-top:1px solid #3a4a30;margin-top:34px;padding-top:20px;font-size:.82rem;color:#90a085}
+
+  /* mobile sticky CTA */
+  .mobile-cta{display:none}
+
+  /* Responsive */
+  @media(max-width:980px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .hero-visual{order:-1}
+    .domino,.g4,.feat,.gallery{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr 1fr 1fr}
+    .dom:not(:last-child)::after{display:none}
+    .install{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    section{padding:54px 0}
+    .nav .btn{display:none}
+    .g3,.g2,.domino,.g4,.feat,.gallery,.steps{grid-template-columns:1fr}
+    .fit ul{grid-template-columns:1fr}
+    .row2{grid-template-columns:1fr}
+    .trust4{grid-template-columns:1fr 1fr}
+    .form-card{padding:26px 20px}
+    .phone{width:100%;max-width:300px}
+    .mobile-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -4px 20px rgba(0,0,0,.08)}
+    .mobile-cta .btn{width:100%;justify-content:center;font-size:1rem;padding:14px}
+    body{padding-bottom:74px}
+    .trust .wrap{font-size:.88rem;gap:8px 14px}
+    .hero h1{font-size:clamp(1.7rem,7vw,2.4rem)}
+    .domino{gap:10px}
+    .pilot-flow{flex-direction:column}
+    .pf{min-width:unset}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="nav-logo"><img src="assets/logo_myfeed.png" alt="마이피드" /><span>마이피드</span></div>
+    <a href="#apply" class="btn">파일럿 신청</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">IoT 사료빈 잔량 관리 솔루션 · 마이피드</span>
+      <h1>당일 주문을 줄이고,<br /><span class="hl">사료 배송을 미리 계획</span>하세요.</h1>
+      <p class="sub">단순한 잔량 확인 장비가 아닙니다. 사료빈 잔량 데이터를 기반으로 부족 가능 농가를 미리 파악하고, 당일·긴급 주문을 줄여 배송을 사전에 계획할 수 있게 하는 <b>운영 개선 솔루션</b>입니다.</p>
+      <div class="effbar">
+        <span class="eff"><b>↓</b> 당일·긴급 주문 감소</span>
+        <span class="eff"><b>↓</b> 배차 변경·혼선 감소</span>
+        <span class="eff"><b>↑</b> 계획 배송 전환</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#apply" class="btn">무료 파일럿 신청하기 →</a>
+      </div>
+      <p class="cta-sub">일부 농가에 먼저 적용해 효과를 확인한 뒤 결정하세요 · 영업일 1일 내 연락드립니다</p>
+    </div>
+    <div class="hero-visual">
+      <img class="phone" src="assets/app_dashboard.webp" alt="마이피드 앱 대시보드 — 농가별 사료빈 잔량을 한눈에 확인" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST STRIP ===== -->
+<div class="trust">
+  <div class="wrap">
+    <span>IoT 센서 설치</span><span class="dot">→</span>
+    <span>잔량 데이터 자동 수집</span><span class="dot">→</span>
+    <span>FMC·Myfeed 시스템 연동</span><span class="dot">→</span>
+    <span>설치 이후 운영까지 함께하는 관리형 서비스</span>
+  </div>
+</div>
+
+<!-- ===== PAIN ===== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">이런 상황, 반복되고 있지 않으신가요?</span>
+    <h2 class="sec-title" style="margin-top:14px">당일 주문 하나가 이렇게나 많은 문제를 만들어냅니다</h2>
+    <p class="sec-lead">"사료가 없다"는 연락 한 통이 그날 생산 일정을 뒤집고, 배차를 바꾸고, 다른 농가 배송까지 밀리게 만듭니다. 매주 반복되고 있지 않으신가요?</p>
+    <div class="domino">
+      <div class="dom"><div class="step">STEP 1</div><h4>긴급 생산 변경</h4><p>이미 짜여진 생산 일정을 당일 급변경해야 합니다.</p></div>
+      <div class="dom"><div class="step">STEP 2</div><h4>배차·루트 재조정</h4><p>기존 배차 순서가 뒤바뀌고 다른 농가 배송까지 영향을 받습니다.</p></div>
+      <div class="dom"><div class="step">STEP 3</div><h4>추가 배송 비용</h4><p>무계획 긴급 배송은 차량 공회전과 추가 연료비를 만듭니다.</p></div>
+      <div class="dom"><div class="step">STEP 4</div><h4>담당자 업무 폭증</h4><p>잔량 확인 전화·긴급 조정·클레임 대응이 하루 종일 이어집니다.</p></div>
+    </div>
+    <div class="grid g4">
+      <div class="card"><div class="ico">🏭</div><h4>생산 계획 차질</h4><p>사료가 부족해진 뒤에야 주문이 들어옵니다. 확정된 생산 일정을 당일 급변경해야 해 효율이 낮아집니다.</p></div>
+      <div class="card"><div class="ico">🚚</div><h4>배차 변경·배송 혼선</h4><p>긴급 주문에 맞춰 배차 순서가 뒤바뀌면 기존 농가 배송 루트 전체가 영향을 받습니다.</p></div>
+      <div class="card"><div class="ico">💸</div><h4>추가 배송 비용 증가</h4><p>계획 없이 나가는 긴급 배송은 공회전·추가 연료비·기사 초과 근무를 만듭니다.</p></div>
+      <div class="card"><div class="ico">📞</div><h4>담당자 업무 과부하</h4><p>잔량 확인 전화, 긴급 배차 조정, 클레임 대응이 매일 반복됩니다.</p></div>
+    </div>
+    <p class="sec-lead" style="margin-top:30px;font-weight:600;color:var(--ink)">이 모든 문제의 출발점은 하나입니다. <span style="color:var(--green-deep)">잔량 데이터 없이 사후 대응만 반복</span>하기 때문입니다. 미리 파악하고 먼저 대응할 수 있다면, 이 악순환을 끊을 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="sec-mist">
+  <div class="wrap">
+    <span class="eyebrow">SOLUTION</span>
+    <h2 class="sec-title" style="margin-top:14px">잔량 데이터 기반 운영 개선 솔루션</h2>
+    <p class="sec-lead">단순한 잔량 확인 장비가 아닙니다. 마이피드는 사료빈 잔량 데이터로 부족 가능 농가를 미리 파악하고, 당일·긴급 주문을 줄여 배송을 사전에 계획할 수 있게 합니다. 설치 이후에도 데이터 수집 안정성과 운영 개선 효과를 함께 점검합니다.</p>
+    <div class="steps">
+      <div class="stp"><div class="num">1</div><h4>IoT 장비 설치</h4><p>사료빈 구조·현장을 확인한 뒤 센서를 부착하고 데이터 수집 환경을 세팅합니다.</p></div>
+      <div class="stp"><div class="num">2</div><h4>잔량 자동 수집</h4><p>장비가 주기적으로 잔량을 측정해 FMC·Myfeed로 자동 전송합니다.</p></div>
+      <div class="stp"><div class="num">3</div><h4>부족 농가 선별·알림</h4><p>기준 이하 농가를 자동 표시하고 담당자에게 알림을 보냅니다.</p></div>
+      <div class="stp"><div class="num">4</div><h4>사전 대응·계획 배송</h4><p>부족 예상 농가에 먼저 연락하거나 기존 배송에 포함해 대응합니다.</p></div>
+      <div class="stp"><div class="num">5</div><h4>운영 개선·패턴 분석</h4><p>데이터가 쌓일수록 소비 패턴·주문 주기를 파악해 배송 정확도를 높입니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section>
+  <div class="wrap center">
+    <span class="eyebrow">CORE FEATURES</span>
+    <h2 class="sec-title" style="margin-top:14px">5가지 핵심 기능</h2>
+    <p class="sec-lead">잔량 확인을 넘어, 실제 주문·배송 운영을 바꾸는 기능입니다.</p>
+  </div>
+  <div class="wrap">
+    <div class="feat">
+      <div class="card"><img class="shot" src="assets/app_detail.webp" alt="사료빈 잔량·온도·습도·배터리 상세 화면" loading="lazy" /><h4>① 잔량 데이터 자동 수집</h4><p>IoT 장비가 잔량을 주기적으로 측정해 시스템에 자동 반영합니다. 직접 확인 없이 실시간 잔량을 파악합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/web_dashboard.webp" alt="농가별 사료빈 잔량 웹 대시보드" loading="lazy" /><h4>② 농가별 상태 대시보드</h4><p>여러 농가의 잔량을 한 화면에서 리스트로 비교하고, 부족 가능 농가를 우선 관리합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/app_alert.webp" alt="사료 소진 예측 알림 화면" loading="lazy" /><h4>③ 부족 가능 농가 사전 알림</h4><p>임계치 이하로 떨어지면 자동으로 알림을 보냅니다. 바닥나기 전에 배송 일정을 조율합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/app_dispatch.webp" alt="배차 프리뷰·배송 경유지 화면" loading="lazy" /><h4>④ 계획 주문 전환 지원</h4><p>잔량 추이·소비 패턴으로 배송 시점을 예측해 당일 주문 비중을 줄입니다.</p></div>
+      <div class="card"><div class="ico">🛠️</div><h4>⑤ 설치 이후 운영 관리</h4><p>장비 설치로 끝나지 않습니다. 데이터 안정성, 당일 주문 감소 효과, 농가별 개선 여부까지 함께 점검합니다.</p></div>
+      <div class="card" style="background:var(--green-deep);color:#fff;display:flex;flex-direction:column;justify-content:center"><h4 style="color:#fff">감(感)에서 데이터로</h4><p style="color:#dff0d4">"감에 의존하는 방식"에서 "데이터 기반의 사전 관리"로. 사료 주문과 배송 운영의 방식이 달라집니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec-mist">
+  <div class="wrap center">
+    <span class="eyebrow">PRODUCT</span>
+    <h2 class="sec-title" style="margin-top:14px">실제 동작하는 화면으로 확인하세요</h2>
+  </div>
+  <div class="wrap">
+    <div class="gallery">
+      <div class="gal"><img src="assets/app_detail.webp" alt="앱 상세 — 잔량·온도·습도·배터리" loading="lazy" /><span>앱 — 사료빈 상세 상태</span></div>
+      <div class="gal"><img src="assets/web_dashboard.webp" alt="웹 대시보드 — 농가별 잔량 그리드" loading="lazy" /><span>웹 — 농가별 잔량 대시보드</span></div>
+      <div class="gal"><img src="assets/app_alert.webp" alt="소진 예측 알림" loading="lazy" /><span>앱 — 소진 예측 알림</span></div>
+      <div class="gal"><img src="assets/app_dispatch.webp" alt="배차 프리뷰" loading="lazy" /><span>앱 — 배차·배송 경유지</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPECTED EFFECTS ===== -->
+<section>
+  <div class="wrap center">
+    <span class="eyebrow">EFFECT</span>
+    <h2 class="sec-title" style="margin-top:14px">도입 후 기대 효과</h2>
+    <p class="sec-lead">사료 회사와 농가 양쪽의 운영이 함께 안정됩니다.</p>
+  </div>
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="card"><div class="ico">📉</div><h4>당일·긴급 주문 감소</h4><p>잔량을 사전 파악해 급박한 당일 주문 없이 계획적으로 대응합니다.</p></div>
+      <div class="card"><div class="ico">🧭</div><h4>배차 변경·배송 혼선 감소</h4><p>긴급 주문이 줄어 기존 배차가 안정적으로 유지됩니다.</p></div>
+      <div class="card"><div class="ico">☎️</div><h4>전화 확인 업무 절감</h4><p>대시보드로 직접 확인하므로 반복 전화가 필요 없습니다.</p></div>
+      <div class="card"><div class="ico">🛡️</div><h4>사료 부족 리스크 사전 대응</h4><p>부족 가능 농가를 미리 파악해 클레임·긴급 상황 전에 선제 대응합니다.</p></div>
+      <div class="card"><div class="ico">📊</div><h4>생산·배송 계획 안정화</h4><p>잔량 기반 수요 예측으로 생산·배송 계획을 안정적으로 수립합니다.</p></div>
+      <div class="card" style="background:var(--mist);border-color:var(--green-light)"><div class="ico" style="background:#fff">🌱</div><h4>농가 사료 공백 리스크 제거</h4><p>농가는 갑작스러운 사료 부족 없이 안정적으로 축산 운영을 이어갑니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SITE / INSTALL ===== -->
+<section class="sec-mist">
+  <div class="wrap">
+    <span class="eyebrow">FIELD</span>
+    <h2 class="sec-title" style="margin-top:14px">실제 농가 현장에 설치하고, 데이터로 운영을 개선합니다</h2>
+    <div class="install">
+      <img class="site" src="assets/install_site.webp" alt="농가 사료빈에 마이피드 IoT 센서를 설치하는 현장" loading="lazy" />
+      <div class="device">
+        <img src="assets/device_fm05c.webp" alt="마이피드 사료빈 센서 FM-05C" loading="lazy" />
+        <h4 style="color:var(--green-deep)">사료빈 잔량 센서</h4>
+        <p style="font-size:.9rem;color:var(--gray)">사료빈 구조에 맞춰 부착하는 IoT 센서로 잔량을 주기적으로 측정합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PILOT ===== -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">PILOT</span>
+    <h2 class="sec-title" style="margin-top:14px">일부 농가에 먼저 적용해 효과를 직접 검증하세요</h2>
+    <p class="sec-lead">정식 구매 없이, 일부 농가에 먼저 적용합니다. 당일 주문 감소·전화 업무 절감·부족 가능 농가 사전 감지를 데이터로 확인한 뒤, 정식 도입 범위와 비용을 함께 협의합니다.</p>
+    <div class="pilot-flow">
+      <div class="pf"><div class="num">1</div><h4>신청 접수</h4><p>폼 작성 후 영업일 1일 내 연락</p></div>
+      <div class="pf"><div class="num">2</div><h4>현장 상담·농가 선정</h4><p>운영 현황 파악, 우선 적용 농가 결정</p></div>
+      <div class="pf"><div class="num">3</div><h4>설치·시스템 연동</h4><p>IoT 센서 설치 후 FMC·Myfeed 연동</p></div>
+      <div class="pf"><div class="num">4</div><h4>운영·효과 검증</h4><p>실제 데이터로 효과 측정</p></div>
+      <div class="pf"><div class="num">5</div><h4>도입 범위·비용 협의</h4><p>검증 결과 기반으로 협의</p></div>
+    </div>
+    <div class="fit">
+      <h4>이런 조직에 적합합니다</h4>
+      <ul>
+        <li>당일 주문이 자주 발생해 생산·배차 계획이 흔들리는 사료 회사</li>
+        <li>농가별 잔량 확인을 전화·수기로 관리하는 조직</li>
+        <li>배송 계획 변경으로 배송비·운영 부담이 큰 조직</li>
+        <li>농가별 사료 소비 데이터를 체계적으로 관리하고 싶은 조직</li>
+        <li>사료 부족 클레임·긴급 대응을 줄이고 싶은 조직</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FORM ===== -->
+<section id="apply">
+  <div class="wrap center">
+    <span class="eyebrow">APPLY</span>
+    <h2 class="sec-title" style="margin-top:14px">지금 바로 파일럿을 신청하세요</h2>
+    <p class="sec-lead">일부 농가에 먼저 적용해 효과를 확인하고, 그 다음에 결정하세요.<br />아래 정보를 남겨주시면 <b>영업일 1일 내</b> 담당자가 직접 연락드립니다.</p>
+    <div class="trust4">
+      <div><div class="t">💰</div>초기 비용 없음</div>
+      <div><div class="t">⚡</div>영업일 1일 내 연락</div>
+      <div><div class="t">🔄</div>부담 없는 중단 가능</div>
+      <div><div class="t">🔒</div>데이터 보안 준수</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="form-card">
+      <form id="leadForm" novalidate>
+        <!-- honeypot -->
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" />
+
+        <div class="field">
+          <label for="fname">성명 <span class="req">*</span></label>
+          <input type="text" id="fname" name="name" placeholder="성함을 입력해 주세요" required autocomplete="name" />
+          <div class="err" data-for="fname">성명을 입력해 주세요.</div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="fphone">연락처 <span class="req">*</span></label>
+            <input type="tel" id="fphone" name="phone" placeholder="010-0000-0000" required autocomplete="tel" />
+            <div class="err" data-for="fphone">연락처를 정확히 입력해 주세요.</div>
+          </div>
+          <div class="field">
+            <label for="femail">이메일 <span class="req">*</span></label>
+            <input type="email" id="femail" name="email" placeholder="example@company.com" required autocomplete="email" />
+            <div class="err" data-for="femail">이메일 형식을 확인해 주세요.</div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="fcompany">회사명 <span class="req">*</span></label>
+            <input type="text" id="fcompany" name="company" placeholder="소속 회사명을 입력해 주세요" required autocomplete="organization" />
+            <div class="err" data-for="fcompany">회사명을 입력해 주세요.</div>
+          </div>
+          <div class="field">
+            <label for="ftitle">직함 <span class="req">*</span></label>
+            <input type="text" id="ftitle" name="title" placeholder="예: 영업팀 과장" required autocomplete="organization-title" />
+            <div class="err" data-for="ftitle">직함을 입력해 주세요.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="fmessage">궁금한 점</label>
+          <textarea id="fmessage" name="message" placeholder="궁금한 점이나 요청 사항을 자유롭게 적어주세요"></textarea>
+        </div>
+
+        <label class="agree">
+          <input type="checkbox" id="fagree" name="agree" required />
+          <span><b>(필수)</b> 파일럿 상담을 위한 개인정보(성명·연락처·이메일·회사·직함) 수집·이용에 동의합니다. 수집된 정보는 상담 목적으로만 사용되며 제3자에게 제공되지 않습니다.</span>
+        </label>
+        <div class="err" data-for="fagree" style="margin-top:-10px;margin-bottom:14px">개인정보 수집·이용 동의가 필요합니다.</div>
+
+        <button type="submit" class="btn" id="submitBtn">파일럿 신청 완료하기 →</button>
+        <p class="form-note">수집된 정보는 파일럿 상담 목적으로만 사용되며, 제3자에게 제공되지 않습니다.</p>
+      </form>
+
+      <div class="form-msg" id="formMsg">
+        <div class="check">✓</div>
+        <h3>신청이 접수되었습니다</h3>
+        <p>영업일 1일 내 담당자가 직접 연락드리겠습니다. 감사합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="info">
+      <img class="flogo" src="assets/logo_myfeed.png" alt="마이피드" loading="lazy" />
+      <h4>주식회사 에임비랩 (AimBe Lab)</h4>
+      <p>전화 <a href="tel:0262424545">02-6242-4545</a> · 이메일 <a href="mailto:kobc@aimbelab.com">kobc@aimbelab.com</a></p>
+      <p>서울 금천구 가산디지털1로 212, 302호</p>
+      <p style="margin-top:14px;max-width:520px;color:#9fb094">에임비랩은 IoT 장비와 FMC·Myfeed 연동 시스템으로 사료빈 잔량 데이터를 수집하고, 부족 가능 농가를 미리 파악해 당일·긴급 주문을 줄이는 운영 개선 솔루션을 제공합니다.</p>
+    </div>
+    <div style="display:flex;gap:20px;align-items:flex-start;justify-content:flex-end">
+      <div class="qrbox">
+        <img src="assets/qr_homepage.svg" alt="홈페이지 QR" loading="lazy" />
+        <span>홈페이지 바로가기</span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">© 2026 AimBe Lab. All rights reserved. · <a href="https://www.aimbelab.com/">www.aimbelab.com</a></div>
+</footer>
+
+<!-- mobile sticky CTA -->
+<div class="mobile-cta"><a href="#apply" class="btn">무료 파일럿 신청하기 →</a></div>
+
+<script>
+const ENDPOINT = ""; // Apps Script /exec URL 삽입 예정
+
+const form = document.getElementById("leadForm");
+const submitBtn = document.getElementById("submitBtn");
+let submitted = false;
+
+function showErr(id, on) {
+  const el = document.querySelector('.err[data-for="' + id + '"]');
+  const input = document.getElementById(id);
+  if (el) el.style.display = on ? "block" : "none";
+  if (input) input.classList.toggle("invalid", on);
+}
+
+function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function validPhone(v) { return /[0-9]/.test(v) && v.replace(/[^0-9]/g, "").length >= 9; }
+
+const fields = [
+  { id: "fname",    valid: () => form.fname.value.trim() !== "" },
+  { id: "fphone",   valid: () => validPhone(form.fphone.value) },
+  { id: "femail",   valid: () => validEmail(form.femail.value) },
+  { id: "fcompany", valid: () => form.fcompany.value.trim() !== "" },
+  { id: "ftitle",   valid: () => form.ftitle.value.trim() !== "" },
+  { id: "fagree",   valid: () => form.fagree.checked }
+];
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+  if (submitted) return;
+
+  let ok = true;
+  fields.forEach(({ id, valid }) => { const v = valid(); showErr(id, !v); if (!v) ok = false; });
+  if (!ok) {
+    document.querySelector(".err[style*='block'], .err[style='display: block;']")
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    return;
+  }
+  if (form._gotcha.value) return; // bot
+
+  submitted = true;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "전송 중...";
+
+  const data = new FormData(form);
+  data.append("submittedAt", new Date().toISOString());
+
+  try {
+    if (ENDPOINT) {
+      await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: data });
+    } else {
+      await new Promise(r => setTimeout(r, 600));
+    }
+    form.style.display = "none";
+    const msg = document.getElementById("formMsg");
+    msg.style.display = "block";
+    msg.scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch (err) {
+    submitted = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = "파일럿 신청 완료하기 →";
+    alert("전송 중 문제가 발생했습니다. 잠시 후 다시 시도하거나 02-6242-4545로 연락 주세요.");
+  }
+});
+
+// 입력 시 에러 즉시 해제
+["fname","fphone","femail","fcompany","ftitle"].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener("input", () => showErr(id, false));
+});
+form.fagree.addEventListener("change", () => showErr("fagree", !form.fagree.checked));
+</script>
+</body>
+</html>
