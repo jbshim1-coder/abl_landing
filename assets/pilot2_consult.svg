@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+
+  <rect width="400" height="220" fill="#EDF4E7"/>
+  <!-- Farm/barn shape -->
+  <rect x="130" y="100" width="140" height="90" rx="6" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <polygon points="120,100 200,40 280,100" fill="#3F6B33" opacity=".85"/>
+  <!-- Roof detail -->
+  <line x1="200" y1="40" x2="200" y2="100" stroke="#ffffff" stroke-width="2" opacity=".3"/>
+  <!-- Door -->
+  <rect x="182" y="142" width="36" height="48" rx="4" fill="#B7D2A9"/>
+  <!-- Windows -->
+  <rect x="143" y="118" width="26" height="22" rx="4" fill="#B7D2A9" opacity=".8"/>
+  <rect x="231" y="118" width="26" height="22" rx="4" fill="#B7D2A9" opacity=".8"/>
+  <!-- Location pin -->
+  <circle cx="320" cy="60" r="26" fill="#3F6B33"/>
+  <path d="M320,38 Q338,38 338,58 Q338,72 320,86 Q302,72 302,58 Q302,38 320,38 Z" fill="#87B570"/>
+  <circle cx="320" cy="56" r="9" fill="#ffffff"/>
+  <!-- Conversation bubble -->
+  <rect x="20" y="50" width="90" height="50" rx="10" fill="#3F6B33"/>
+  <polygon points="60,100 70,110 80,100" fill="#3F6B33"/>
+  <text x="65" y="71" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#ffffff">현황 파악</text>
+  <text x="65" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#B7D2A9">농가 선정</text>
+
+</svg>

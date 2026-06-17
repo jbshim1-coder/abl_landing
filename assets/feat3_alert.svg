@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+
+  <rect width="400" height="220" fill="#EDF4E7"/>
+  <!-- Bell shape -->
+  <path d="M200,180 Q170,180 165,165 Q158,150 160,120 Q162,90 175,75 Q182,55 200,52 Q218,55 225,75 Q238,90 240,120 Q242,150 235,165 Q230,180 200,180 Z" fill="#3F6B33" opacity=".9"/>
+  <rect x="192" y="178" width="16" height="10" rx="5" fill="#3F6B33"/>
+  <ellipse cx="200" cy="192" rx="14" ry="7" fill="#3F6B33" opacity=".6"/>
+  <!-- Bell highlight -->
+  <path d="M185,80 Q190,68 200,64" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+  <!-- Notification badge -->
+  <circle cx="236" cy="54" r="20" fill="#F5A623"/>
+  <text x="236" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="800" fill="#ffffff">!</text>
+  <!-- Calendar card -->
+  <rect x="20" y="60" width="110" height="100" rx="10" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <rect x="20" y="60" width="110" height="28" rx="10" fill="#3F6B33"/>
+  <rect x="20" y="74" width="110" height="14" fill="#3F6B33"/>
+  <text x="75" y="79" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#ffffff">배송 예정일</text>
+  <text x="75" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" font-weight="800" fill="#3F6B33">D-3</text>
+  <text x="75" y="148" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">자동 알림 발송</text>
+  <!-- Wave lines (signal) -->
+  <path d="M310,100 Q340,85 370,100 Q340,115 310,100" fill="none" stroke="#87B570" stroke-width="3" opacity=".6"/>
+  <path d="M316,84 Q340,66 364,84" fill="none" stroke="#B7D2A9" stroke-width="2" opacity=".5"/>
+
+</svg>

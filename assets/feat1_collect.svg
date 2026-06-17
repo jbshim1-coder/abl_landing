@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+
+  <rect width="400" height="220" fill="#EDF4E7"/>
+  <!-- Silo1: 78% -->
+  <polygon points="30,50 110,50 70,26" fill="#B7D2A9" opacity=".8"/>
+  <rect x="30" y="50" width="80" height="136" rx="8" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <rect x="32" y="80" width="76" height="104" rx="6" fill="#87B570" opacity=".4"/>
+  <line x1="30" y1="80" x2="110" y2="80" stroke="#3F6B33" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="70" y="138" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#3F6B33">78%</text>
+  <circle cx="70" cy="20" r="8" fill="#3F6B33"/><circle cx="70" cy="20" r="3" fill="#ffffff"/>
+  <path d="M56,20 Q60,12 67,16" fill="none" stroke="#87B570" stroke-width="2" stroke-linecap="round"/>
+  <path d="M84,20 Q80,12 73,16" fill="none" stroke="#87B570" stroke-width="2" stroke-linecap="round"/>
+  <text x="70" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">A 농장</text>
+  <!-- Silo2: 35% warning -->
+  <polygon points="160,50 240,50 200,26" fill="#F5A623" opacity=".4"/>
+  <rect x="160" y="50" width="80" height="136" rx="8" fill="#ffffff" stroke="#F5A623" stroke-width="2.5"/>
+  <rect x="162" y="138" width="76" height="46" rx="6" fill="#F5A623" opacity=".35"/>
+  <line x1="160" y1="138" x2="240" y2="138" stroke="#F5A623" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="200" y="167" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#C07A00">35%</text>
+  <rect x="163" y="58" width="74" height="22" rx="5" fill="#FFF3E0"/>
+  <text x="200" y="73" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#C07A00">잔량 부족 예상</text>
+  <polygon points="200,22 207,32 193,32" fill="#F5A623"/>
+  <rect x="199" y="25" width="2" height="4" rx="1" fill="#ffffff"/><rect x="199" y="30" width="2" height="2" rx="1" fill="#ffffff"/>
+  <text x="200" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#C07A00">B 농장</text>
+  <!-- Silo3: 65% -->
+  <polygon points="290,50 370,50 330,26" fill="#B7D2A9" opacity=".8"/>
+  <rect x="290" y="50" width="80" height="136" rx="8" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <rect x="292" y="98" width="76" height="86" rx="6" fill="#87B570" opacity=".4"/>
+  <line x1="290" y1="98" x2="370" y2="98" stroke="#3F6B33" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="330" y="150" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#3F6B33">65%</text>
+  <circle cx="330" cy="20" r="8" fill="#3F6B33"/><circle cx="330" cy="20" r="3" fill="#ffffff"/>
+  <path d="M316,20 Q320,12 327,16" fill="none" stroke="#87B570" stroke-width="2" stroke-linecap="round"/>
+  <path d="M344,20 Q340,12 333,16" fill="none" stroke="#87B570" stroke-width="2" stroke-linecap="round"/>
+  <text x="330" y="210" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">C 농장</text>
+
+</svg>

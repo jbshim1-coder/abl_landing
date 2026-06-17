@@ -108,7 +108,8 @@
 
   /* feature with image */
   .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
-  .card .shot{border-radius:12px;border:1px solid var(--line);margin-bottom:14px;width:100%;height:150px;object-fit:cover;object-position:50% 12%}
+  .card .shot{border-radius:12px;border:1px solid var(--line);margin-bottom:14px;width:100%;height:150px;object-fit:cover;object-position:center}
+  .pf img{width:100%;height:88px;object-fit:cover;border-radius:10px;margin-bottom:12px}
   .stp .stp-img{width:100%;height:100px;object-fit:cover;border-radius:8px;margin-top:12px}
   .feat .card .shot{height:170px}
 
@@ -384,10 +385,10 @@
   </div>
   <div class="wrap">
     <div class="feat">
-      <div class="card"><img class="shot" src="assets/app_detail.webp" alt="사료빈 잔량·온도·습도·배터리 상세 화면" loading="lazy" /><h4>① 잔량 데이터 자동 수집</h4><p>IoT 장비가 잔량을 주기적으로 측정해 시스템에 자동 반영합니다. 직접 확인 없이 실시간 잔량을 파악합니다.</p></div>
-      <div class="card"><img class="shot" src="assets/web_dashboard.webp" alt="농가별 사료빈 잔량 웹 대시보드" loading="lazy" /><h4>② 농가별 상태 대시보드</h4><p>여러 농가의 잔량을 한 화면에서 리스트로 비교하고, 부족 가능 농가를 우선 관리합니다.</p></div>
-      <div class="card"><img class="shot" src="assets/app_alert.webp" alt="사료 소진 예측 알림 화면" loading="lazy" /><h4>③ 부족 가능 농가 사전 알림</h4><p>임계치 이하로 떨어지면 자동으로 알림을 보냅니다. 바닥나기 전에 배송 일정을 조율합니다.</p></div>
-      <div class="card"><img class="shot" src="assets/app_dispatch.webp" alt="배차 프리뷰·배송 경유지 화면" loading="lazy" /><h4>④ 계획 주문 전환 지원</h4><p>잔량 추이·소비 패턴으로 배송 시점을 예측해 당일 주문 비중을 줄입니다.</p></div>
+      <div class="card"><img class="shot" src="assets/feat1_collect.svg" alt="농가별 사료빈 잔량 자동 수집" loading="lazy" /><h4>① 잔량 데이터 자동 수집</h4><p>IoT 장비가 잔량을 주기적으로 측정해 시스템에 자동 반영합니다. 직접 확인 없이 실시간 잔량을 파악합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/feat2_dashboard.svg" alt="농가별 잔량 상태 대시보드" loading="lazy" /><h4>② 농가별 상태 대시보드</h4><p>여러 농가의 잔량을 한 화면에서 리스트로 비교하고, 부족 가능 농가를 우선 관리합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/feat3_alert.svg" alt="부족 가능 농가 사전 알림" loading="lazy" /><h4>③ 부족 가능 농가 사전 알림</h4><p>임계치 이하로 떨어지면 자동으로 알림을 보냅니다. 바닥나기 전에 배송 일정을 조율합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/feat4_plan.svg" alt="계획 주문 전환 지원" loading="lazy" /><h4>④ 계획 주문 전환 지원</h4><p>잔량 추이·소비 패턴으로 배송 시점을 예측해 당일 주문 비중을 줄입니다.</p></div>
       <div class="card"><div class="ico">🛠️</div><h4>⑤ 설치 이후 운영 관리</h4><p>장비 설치로 끝나지 않습니다. 데이터 안정성, 당일 주문 감소 효과, 농가별 개선 여부까지 함께 점검합니다.</p></div>
       <div class="card" style="background:var(--green-deep);color:#fff;display:flex;flex-direction:column;justify-content:center"><h4 style="color:#fff">감(感)에서 데이터로</h4><p style="color:#dff0d4">"감에 의존하는 방식"에서 "데이터 기반의 사전 관리"로. 사료 주문과 배송 운영의 방식이 달라집니다.</p></div>
     </div>
@@ -460,11 +461,11 @@
     <h2 class="sec-title" style="margin-top:14px">일부 농가에 먼저 적용해 효과를 직접 검증하세요</h2>
     <p class="sec-lead">정식 구매 없이, 일부 농가에 먼저 적용합니다. 당일 주문 감소·전화 업무 절감·부족 가능 농가 사전 감지를 데이터로 확인한 뒤, 정식 도입 범위와 비용을 함께 협의합니다.</p>
     <div class="pilot-flow">
-      <div class="pf"><div class="num">1</div><h4>신청 접수</h4><p>폼 작성 후 영업일 1일 내 연락</p></div>
-      <div class="pf"><div class="num">2</div><h4>현장 상담·농가 선정</h4><p>운영 현황 파악, 우선 적용 농가 결정</p></div>
-      <div class="pf"><div class="num">3</div><h4>설치·시스템 연동</h4><p>IoT 센서 설치 후 FMC·Myfeed 연동</p></div>
-      <div class="pf"><div class="num">4</div><h4>운영·효과 검증</h4><p>실제 데이터로 효과 측정</p></div>
-      <div class="pf"><div class="num">5</div><h4>도입 범위·비용 협의</h4><p>검증 결과 기반으로 협의</p></div>
+      <div class="pf"><img src="assets/pilot1_apply.svg" alt="신청 접수" loading="lazy" /><div class="num">1</div><h4>신청 접수</h4><p>폼 작성 후 영업일 1일 내 연락</p></div>
+      <div class="pf"><img src="assets/pilot2_consult.svg" alt="현장 상담·농가 선정" loading="lazy" /><div class="num">2</div><h4>현장 상담·농가 선정</h4><p>운영 현황 파악, 우선 적용 농가 결정</p></div>
+      <div class="pf"><img src="assets/pilot3_install.svg" alt="설치·시스템 연동" loading="lazy" /><div class="num">3</div><h4>설치·시스템 연동</h4><p>IoT 센서 설치 후 FMC·Myfeed 연동</p></div>
+      <div class="pf"><img src="assets/pilot4_verify.svg" alt="운영·효과 검증" loading="lazy" /><div class="num">4</div><h4>운영·효과 검증</h4><p>실제 데이터로 효과 측정</p></div>
+      <div class="pf"><img src="assets/pilot5_contract.svg" alt="도입 범위·비용 협의" loading="lazy" /><div class="num">5</div><h4>도입 범위·비용 협의</h4><p>검증 결과 기반으로 협의</p></div>
     </div>
     <div class="fit">
       <h4>이런 조직에 적합합니다</h4>
@@ -486,10 +487,10 @@
     <h2 class="sec-title" style="margin-top:14px">지금 바로 파일럿을 신청하세요</h2>
     <p class="sec-lead">일부 농가에 먼저 적용해 효과를 확인하고, 그 다음에 결정하세요.<br />아래 정보를 남겨주시면 <b>영업일 1일 내</b> 담당자가 직접 연락드립니다.</p>
     <div class="trust4">
-      <div class="tb"><img src="assets/device_fm05c.webp" alt="IoT 센서 기기 — 초기 비용 없음" loading="lazy" /><span>초기 비용 없음</span></div>
-      <div class="tb"><img src="assets/app_alert.webp" alt="빠른 알림 — 영업일 1일 내 연락" loading="lazy" /><span>영업일 1일 내 연락</span></div>
-      <div class="tb"><img src="assets/app_dashboard.webp" alt="대시보드 — 부담 없는 중단 가능" loading="lazy" /><span>부담 없는 중단 가능</span></div>
-      <div class="tb"><img src="assets/app_detail.webp" alt="상세 데이터 — 데이터 보안 준수" loading="lazy" /><span>데이터 보안 준수</span></div>
+      <div class="tb"><img src="assets/trust1_free.svg" alt="초기 비용 없음" loading="lazy" /><span>초기 비용 없음</span></div>
+      <div class="tb"><img src="assets/trust2_fast.svg" alt="영업일 1일 내 연락" loading="lazy" /><span>영업일 1일 내 연락</span></div>
+      <div class="tb"><img src="assets/trust3_flex.svg" alt="부담 없는 중단 가능" loading="lazy" /><span>부담 없는 중단 가능</span></div>
+      <div class="tb"><img src="assets/trust4_secure.svg" alt="데이터 보안 준수" loading="lazy" /><span>데이터 보안 준수</span></div>
     </div>
   </div>
 

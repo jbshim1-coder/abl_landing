@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+
+  <rect width="400" height="220" fill="#EDF4E7"/>
+  <!-- Clock face -->
+  <circle cx="200" cy="105" r="78" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <circle cx="200" cy="105" r="68" fill="#3F6B33" opacity=".05"/>
+  <!-- Clock hands showing "quick" -->
+  <line x1="200" y1="105" x2="200" y2="50" stroke="#3F6B33" stroke-width="4" stroke-linecap="round"/>
+  <line x1="200" y1="105" x2="235" y2="115" stroke="#87B570" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="200" cy="105" r="6" fill="#3F6B33"/>
+  <!-- Clock ticks -->
+  <line x1="200" y1="32" x2="200" y2="42" stroke="#B7D2A9" stroke-width="2.5"/>
+  <line x1="200" y1="158" x2="200" y2="168" stroke="#B7D2A9" stroke-width="2.5"/>
+  <line x1="127" y1="105" x2="137" y2="105" stroke="#B7D2A9" stroke-width="2.5"/>
+  <line x1="263" y1="105" x2="273" y2="105" stroke="#B7D2A9" stroke-width="2.5"/>
+  <!-- "1일" overlay -->
+  <text x="200" y="112" text-anchor="middle" font-family="system-ui,sans-serif" font-size="32" font-weight="800" fill="#3F6B33" opacity=".15">1일</text>
+  <text x="200" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#3F6B33">영업일 1일 내 연락</text>
+
+</svg>

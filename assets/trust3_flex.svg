@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220">
+
+  <rect width="400" height="220" fill="#EDF4E7"/>
+  <!-- Rounded square -->
+  <rect x="124" y="24" width="152" height="152" rx="30" fill="#ffffff" stroke="#B7D2A9" stroke-width="2"/>
+  <!-- Pause bars -->
+  <rect x="155" y="52" width="42" height="96" rx="14" fill="#87B570"/>
+  <rect x="203" y="52" width="42" height="96" rx="14" fill="#87B570"/>
+  <!-- Small check badge -->
+  <circle cx="312" cy="50" r="26" fill="#3F6B33"/>
+  <polyline points="299,50 308,59 326,42" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="200" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="#3F6B33">언제든 부담 없이 중단 가능</text>
+
+</svg>
