@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"python3 << 'PYEOF'\\nimport os\\nassets = '/home/ubuntu/abl_landing/assets'\\nG='#87B570'; D='#3F6B33'; L='#B7D2A9'; M='#EDF4E7'\\nW='#ffffff'; GR='#5E6B61'; O='#F5A623'; R='#E05656'\\n\\ndef sv...",
+  "error": "Exit code 1\nTraceback (most recent call last):\n  File \"<stdin>\", line 141, in <module>\nNameError: name 'OD' is not defined. Did you mean: 'D'?",
+  "timestamp": "2026-06-17T23:30:46.300Z",
+  "retry_count": 1
+}

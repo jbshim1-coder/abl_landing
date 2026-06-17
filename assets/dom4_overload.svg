@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+
+  <rect width="600" height="300" fill="#FFF5F5"/>
+  <!-- Person silhouette at desk (abstract) -->
+  <circle cx="180" cy="90" r="40" fill="#5E6B61" opacity=".15"/>
+  <circle cx="180" cy="75" r="22" fill="#5E6B61" opacity=".3"/>
+  <rect x="140" y="100" width="80" height="60" rx="20" fill="#5E6B61" opacity=".2"/>
+  <!-- Phone ringing (left) -->
+  <rect x="40" y="60" width="80" height="50" rx="10" fill="#E05656" opacity=".15" stroke="#E05656" stroke-width="1.5"/>
+  <text x="80" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#E05656">전화</text>
+  <text x="80" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">잔량 확인 요청</text>
+  <path d="M120,82 L140,82" stroke="#E05656" stroke-width="2" stroke-dasharray="4,2"/>
+  <polygon points="138,78 148,82 138,86" fill="#E05656"/>
+  <!-- Task cards flying in -->
+  <rect x="270" y="40" width="140" height="36" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="340" y="55" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#C07A00">긴급 배차 조정</text>
+  <text x="340" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">C농장 → D농장 순서 변경</text>
+  <rect x="310" y="90" width="140" height="36" rx="8" fill="#FFF0F0" stroke="#E05656" stroke-width="1.5"/>
+  <text x="380" y="105" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#E05656">클레임 대응</text>
+  <text x="380" y="120" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">배송 지연 항의 전화</text>
+  <rect x="260" y="140" width="140" height="36" rx="8" fill="#FFF0F0" stroke="#E05656" stroke-width="1.5"/>
+  <text x="330" y="155" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#E05656">생산팀 긴급 연락</text>
+  <text x="330" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">당일 추가 생산 요청</text>
+  <rect x="300" y="190" width="140" height="36" rx="8" fill="#FFF3E0" stroke="#F5A623" stroke-width="1.5"/>
+  <text x="370" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#C07A00">잔량 현황 수기 정리</text>
+  <text x="370" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">10개 농가 전화 확인</text>
+  <!-- Daily count -->
+  <rect x="460" y="40" width="120" height="220" rx="14" fill="#ffffff" stroke="#fcc" stroke-width="1.5"/>
+  <text x="520" y="70" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">하루 평균</text>
+  <text x="520" y="110" text-anchor="middle" font-family="system-ui,sans-serif" font-size="40" font-weight="800" fill="#E05656">23</text>
+  <text x="520" y="132" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#5E6B61">건 처리</text>
+  <line x1="475" y1="148" x2="565" y2="148" stroke="#fcc" stroke-width="1"/>
+  <text x="520" y="170" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">초과근무</text>
+  <text x="520" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" font-weight="800" fill="#F5A623">+2h</text>
+  <text x="520" y="227" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#5E6B61">매일</text>
+  <text x="520" y="252" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">반복됩니다</text>
+
+</svg>

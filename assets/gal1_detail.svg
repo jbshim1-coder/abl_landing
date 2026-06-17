@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+
+  <rect width="600" height="300" fill="#3F6B33"/>
+  <circle cx="500" cy="50" r="120" fill="#ffffff" opacity=".04"/>
+  <circle cx="100" cy="280" r="100" fill="#ffffff" opacity=".04"/>
+  <polygon points="80,90 280,90 180,50" fill="#ffffff" opacity=".3"/>
+  <rect x="80" y="90" width="200" height="150" rx="10" fill="#ffffff" opacity=".15"/>
+  <rect x="82" y="120" width="196" height="118" rx="8" fill="#87B570" opacity=".6"/>
+  <line x1="80" y1="120" x2="280" y2="120" stroke="#ffffff" stroke-width="2" stroke-dasharray="6,3" opacity=".7"/>
+  <text x="180" y="175" text-anchor="middle" font-family="system-ui,sans-serif" font-size="42" font-weight="800" fill="#ffffff">78%</text>
+  <text x="180" y="200" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#B7D2A9">현재 잔량</text>
+  <text x="180" y="60" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#B7D2A9">경기 A 농장 · 1번 사료빈</text>
+  <rect x="330" y="30" width="240" height="80" rx="12" fill="#ffffff" opacity=".1"/>
+  <text x="345" y="58" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">온도</text>
+  <text x="345" y="80" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#ffffff">22°C</text>
+  <rect x="415" y="38" width="2" height="56" fill="#ffffff" opacity=".2"/>
+  <text x="430" y="58" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">습도</text>
+  <text x="430" y="80" font-family="system-ui,sans-serif" font-size="22" font-weight="800" fill="#ffffff">58%</text>
+  <rect x="500" y="38" width="2" height="56" fill="#ffffff" opacity=".2"/>
+  <text x="515" y="58" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">배터리</text>
+  <circle cx="535" cy="72" r="8" fill="#87B570"/>
+  <rect x="330" y="128" width="240" height="80" rx="12" fill="#ffffff" opacity=".1"/>
+  <text x="345" y="150" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">최근 측정</text>
+  <text x="345" y="172" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#ffffff">3,880 kg</text>
+  <text x="435" y="150" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">예상 소진</text>
+  <text x="435" y="172" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#F5A623">D-4</text>
+  <rect x="330" y="226" width="240" height="56" rx="12" fill="#87B570" opacity=".2"/>
+  <text x="345" y="248" font-family="system-ui,sans-serif" font-size="12" fill="#B7D2A9">잔량 추이</text>
+  <polyline points="345,270 370,262 395,258 420,261 445,250 470,244 495,252 520,240 545,234 570,237" fill="none" stroke="#87B570" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>

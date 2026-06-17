@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+
+  <rect width="600" height="300" fill="#FFF5F5"/>
+  <!-- Map background hints -->
+  <line x1="0" y1="0" x2="600" y2="0" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="50" x2="600" y2="50" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="100" x2="600" y2="100" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="150" x2="600" y2="150" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="200" x2="600" y2="200" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="250" x2="600" y2="250" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="0" y1="300" x2="600" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/>
+  <line x1="0" y1="0" x2="0" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="60" y1="0" x2="60" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="120" y1="0" x2="120" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="180" y1="0" x2="180" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="240" y1="0" x2="240" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="300" y1="0" x2="300" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="360" y1="0" x2="360" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="420" y1="0" x2="420" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="480" y1="0" x2="480" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="540" y1="0" x2="540" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/><line x1="600" y1="0" x2="600" y2="300" stroke="#fcc" stroke-width="0.5" opacity=".4"/>
+  <!-- Original planned route (green, calm) -->
+  <text x="30" y="24" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#5E6B61" opacity=".6">원래 계획 경로</text>
+  <path d="M60,260 L180,180 L300,140 L420,100 L540,70" fill="none" stroke="#87B570" stroke-width="3" opacity=".3" stroke-linecap="round"/>
+  <!-- Chaotic rerouted arrows (red) -->
+  <text x="30" y="44" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#E05656">긴급 재조정 경로</text>
+  <path d="M60,260 L240,80 L120,200 L400,60 L280,220 L540,90" fill="none" stroke="#E05656" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8,4"/>
+  <!-- Delivery stops -->
+  <circle cx="60" cy="260" r="14" fill="#3F6B33" stroke="#ffffff" stroke-width="2"/>
+  <text x="60" y="265" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="#ffffff">출발</text>
+  <circle cx="240" cy="80" r="12" fill="#E05656" stroke="#ffffff" stroke-width="2"/>
+  <text x="240" y="74" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#ffffff">긴급</text>
+  <circle cx="180" cy="180" r="11" fill="#87B570" stroke="#ffffff" stroke-width="1.5" opacity=".4"/>
+  <text x="180" y="194" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5E6B61">A농장</text>
+  <circle cx="300" cy="140" r="11" fill="#87B570" stroke="#ffffff" stroke-width="1.5" opacity=".4"/>
+  <text x="300" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5E6B61">B농장</text>
+  <circle cx="420" cy="100" r="11" fill="#87B570" stroke="#ffffff" stroke-width="1.5" opacity=".4"/>
+  <text x="420" y="114" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5E6B61">C농장</text>
+  <circle cx="540" cy="70" r="11" fill="#87B570" stroke="#ffffff" stroke-width="1.5" opacity=".4"/>
+  <text x="540" y="84" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#5E6B61">D농장</text>
+  <!-- Impact label -->
+  <rect x="330" y="180" width="240" height="100" rx="12" fill="#ffffff" stroke="#fcc" stroke-width="1.5" opacity=".95"/>
+  <text x="450" y="206" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#E05656">기존 배송 전체 지연</text>
+  <text x="345" y="228" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">• 배송 순서 전면 변경</text>
+  <text x="345" y="246" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">• 다른 농가 2~3시간 지연</text>
+  <text x="345" y="264" font-family="system-ui,sans-serif" font-size="10" fill="#5E6B61">• 기사 초과 근무 발생</text>
+
+</svg>

@@ -82,11 +82,11 @@
 
   /* Domino */
   .domino{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
-  .dom{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px 18px;position:relative}
-  .dom .step{font-size:.78rem;font-weight:800;color:var(--green);letter-spacing:.05em}
-  .dom h4{margin:8px 0 6px;font-size:1.04rem}
-  .dom p{font-size:.9rem;color:var(--gray)}
-  .dom:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--green-light);font-weight:800;z-index:2}
+  .dom{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;position:relative}
+  .dom .step{font-size:.78rem;font-weight:800;color:#E05656;letter-spacing:.05em}
+  .dom h4{margin:8px 0 8px;font-size:1.08rem}
+  .dom p{font-size:.92rem;color:var(--gray)}
+  .dom-img{width:100%;height:180px;object-fit:cover;border-radius:12px;margin-bottom:16px}
 
   /* Cards grid */
   .grid{display:grid;gap:18px;margin-top:36px}
@@ -116,7 +116,7 @@
   /* gallery */
   .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
   .gal{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;box-shadow:var(--shadow);text-align:center}
-  .gal img{border-radius:10px;margin:0 auto 10px;max-height:300px;width:auto}
+  .gal img{border-radius:10px;margin:0 auto 10px;width:100%;height:200px;object-fit:cover}
   .gal span{font-size:.85rem;color:var(--gray);font-weight:600}
 
   /* site/install */
@@ -309,30 +309,14 @@
 <!-- ===== PAIN ===== -->
 <section>
   <div class="wrap">
-    <div class="pain-split">
-      <!-- 좌: 텍스트 + 도미노 -->
-      <div>
-        <span class="eyebrow">이런 상황, 반복되고 있지 않으신가요?</span>
-        <h2 class="sec-title" style="margin-top:14px">당일 주문 하나가 이렇게나 많은 문제를 만들어냅니다</h2>
-        <p class="sec-lead" style="margin-bottom:28px">"사료가 없다"는 연락 한 통이 그날 생산 일정을 뒤집고, 배차를 바꾸고, 다른 농가 배송까지 밀리게 만듭니다. 매주 반복되고 있지 않으신가요?</p>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="dom" style="position:relative"><div class="step">STEP 1</div><h4>긴급 생산 변경</h4><p>이미 짜여진 생산 일정을 당일 급변경해야 합니다.</p></div>
-          <div class="dom" style="position:relative"><div class="step">STEP 2</div><h4>배차·루트 재조정</h4><p>기존 배차 순서가 뒤바뀌고 다른 농가 배송까지 영향을 받습니다.</p></div>
-          <div class="dom" style="position:relative"><div class="step">STEP 3</div><h4>추가 배송 비용</h4><p>무계획 긴급 배송은 차량 공회전과 추가 연료비를 만듭니다.</p></div>
-          <div class="dom" style="position:relative"><div class="step">STEP 4</div><h4>담당자 업무 폭증</h4><p>잔량 확인 전화·긴급 조정·클레임 대응이 하루 종일 이어집니다.</p></div>
-        </div>
-      </div>
-      <!-- 우: 현장 사진 + 디바이스 뱃지 -->
-      <div class="pain-photo-wrap">
-        <img class="pain-main-img" src="assets/install_site.webp" alt="농가 사료빈 현장 — 잔량 센서 설치" loading="lazy" />
-        <div class="pain-device-badge">
-          <img src="assets/device_fm05c.webp" alt="FM-05C 잔량 센서" loading="lazy" />
-          <div>
-            <div class="badge-title">사료빈 잔량 센서 FM-05C</div>
-            <div class="badge-text">사료빈에 부착해<br />잔량을 자동 수집</div>
-          </div>
-        </div>
-      </div>
+    <span class="eyebrow">이런 상황, 반복되고 있지 않으신가요?</span>
+    <h2 class="sec-title" style="margin-top:14px">당일 주문 하나가 이렇게나 많은 문제를 만들어냅니다</h2>
+    <p class="sec-lead" style="margin-bottom:36px">"사료가 없다"는 연락 한 통이 그날 생산 일정을 뒤집고, 배차를 바꾸고, 다른 농가 배송까지 밀리게 만듭니다. 매주 반복되고 있지 않으신가요?</p>
+    <div class="grid g2" style="gap:24px">
+      <div class="dom"><img class="dom-img" src="assets/dom1_production.svg" alt="긴급 생산 변경" loading="lazy"/><div class="step">STEP 1</div><h4>긴급 생산 변경</h4><p>이미 짜여진 생산 일정을 당일 급변경해야 합니다. 확정된 라인을 중단하고 긴급 주문을 밀어넣으면 전체 효율이 무너집니다.</p></div>
+      <div class="dom"><img class="dom-img" src="assets/dom2_dispatch.svg" alt="배차·루트 재조정" loading="lazy"/><div class="step">STEP 2</div><h4>배차·루트 재조정</h4><p>기존 배차 순서가 뒤바뀌고 다른 농가 배송까지 영향을 받습니다. 한 곳의 긴급이 전체 루트를 흔듭니다.</p></div>
+      <div class="dom"><img class="dom-img" src="assets/dom3_cost.svg" alt="추가 배송 비용" loading="lazy"/><div class="step">STEP 3</div><h4>추가 배송 비용</h4><p>무계획 긴급 배송은 차량 공회전과 추가 연료비를 만듭니다. 월 4회 발생 시 연간 1,200만원 이상 추가됩니다.</p></div>
+      <div class="dom"><img class="dom-img" src="assets/dom4_overload.svg" alt="담당자 업무 폭증" loading="lazy"/><div class="step">STEP 4</div><h4>담당자 업무 폭증</h4><p>잔량 확인 전화·긴급 조정·클레임 대응이 하루 종일 이어집니다. 본래 업무보다 대응 업무가 더 많아집니다.</p></div>
     </div>
 
     <!-- 4 문제 카드 -->
@@ -389,7 +373,7 @@
       <div class="card"><img class="shot" src="assets/feat2_dashboard.svg" alt="농가별 잔량 상태 대시보드" loading="lazy" /><h4>② 농가별 상태 대시보드</h4><p>여러 농가의 잔량을 한 화면에서 리스트로 비교하고, 부족 가능 농가를 우선 관리합니다.</p></div>
       <div class="card"><img class="shot" src="assets/feat3_alert.svg" alt="부족 가능 농가 사전 알림" loading="lazy" /><h4>③ 부족 가능 농가 사전 알림</h4><p>임계치 이하로 떨어지면 자동으로 알림을 보냅니다. 바닥나기 전에 배송 일정을 조율합니다.</p></div>
       <div class="card"><img class="shot" src="assets/feat4_plan.svg" alt="계획 주문 전환 지원" loading="lazy" /><h4>④ 계획 주문 전환 지원</h4><p>잔량 추이·소비 패턴으로 배송 시점을 예측해 당일 주문 비중을 줄입니다.</p></div>
-      <div class="card"><div class="ico">🛠️</div><h4>⑤ 설치 이후 운영 관리</h4><p>장비 설치로 끝나지 않습니다. 데이터 안정성, 당일 주문 감소 효과, 농가별 개선 여부까지 함께 점검합니다.</p></div>
+      <div class="card"><img class="shot" src="assets/feat5_manage.svg" alt="설치 이후 운영 관리" loading="lazy" /><h4>⑤ 설치 이후 운영 관리</h4><p>장비 설치로 끝나지 않습니다. 데이터 안정성, 당일 주문 감소 효과, 농가별 개선 여부까지 함께 점검합니다.</p></div>
       <div class="card" style="background:var(--green-deep);color:#fff;display:flex;flex-direction:column;justify-content:center"><h4 style="color:#fff">감(感)에서 데이터로</h4><p style="color:#dff0d4">"감에 의존하는 방식"에서 "데이터 기반의 사전 관리"로. 사료 주문과 배송 운영의 방식이 달라집니다.</p></div>
     </div>
   </div>
@@ -403,10 +387,10 @@
   </div>
   <div class="wrap">
     <div class="gallery">
-      <div class="gal"><img src="assets/app_detail.webp" alt="앱 상세 — 잔량·온도·습도·배터리" loading="lazy" /><span>앱 — 사료빈 상세 상태</span></div>
-      <div class="gal"><img src="assets/web_dashboard.webp" alt="웹 대시보드 — 농가별 잔량 그리드" loading="lazy" /><span>웹 — 농가별 잔량 대시보드</span></div>
-      <div class="gal"><img src="assets/app_alert.webp" alt="소진 예측 알림" loading="lazy" /><span>앱 — 소진 예측 알림</span></div>
-      <div class="gal"><img src="assets/app_dispatch.webp" alt="배차 프리뷰" loading="lazy" /><span>앱 — 배차·배송 경유지</span></div>
+      <div class="gal"><img src="assets/gal1_detail.svg" alt="사료빈 상세 잔량 상태" loading="lazy" /><span>사료빈 상세 상태 — 잔량·온도·습도</span></div>
+      <div class="gal"><img src="assets/gal2_dashboard.svg" alt="농가별 잔량 대시보드" loading="lazy" /><span>농가별 잔량 현황 대시보드</span></div>
+      <div class="gal"><img src="assets/gal3_alert.svg" alt="소진 예측 사전 알림" loading="lazy" /><span>소진 예측 · 사전 알림</span></div>
+      <div class="gal"><img src="assets/gal4_dispatch.svg" alt="배차·배송 경유지 계획" loading="lazy" /><span>배차 · 배송 경유지 계획</span></div>
     </div>
   </div>
 </section>
