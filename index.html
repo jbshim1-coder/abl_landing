@@ -198,6 +198,23 @@
   /* mobile sticky CTA */
   .mobile-cta{display:none}
 
+  /* floating strip banner */
+  .float-bar{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--green-deep);color:#fff;
+    padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    box-shadow:0 -4px 28px rgba(63,107,51,.30);
+    transform:translateY(110%);transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
+  .float-bar.visible{transform:translateY(0)}
+  .float-bar .fb-text strong{display:block;font-size:1rem;font-weight:700}
+  .float-bar .fb-text span{font-size:.84rem;color:var(--green-light);margin-top:2px;display:block}
+  .float-bar .fb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .float-bar .fb-btn{background:#fff;color:var(--green-deep);font-weight:700;font-size:.95rem;
+    padding:11px 24px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;
+    text-decoration:none;display:inline-flex;align-items:center;transition:.18s}
+  .float-bar .fb-btn:hover{background:var(--mist)}
+  .float-bar .fb-close{background:transparent;border:none;color:rgba(255,255,255,.55);
+    font-size:1.5rem;cursor:pointer;padding:4px 6px;line-height:1;transition:.15s;flex-shrink:0}
+  .float-bar .fb-close:hover{color:#fff}
+
   /* Responsive */
   @media(max-width:980px){
     .hero-grid{grid-template-columns:1fr;gap:30px}
@@ -237,6 +254,11 @@
     .pain-device-badge img{height:40px}
     .sol-screens img.wide{height:120px}
     .effect-banner{padding:24px 20px}
+    .float-bar{padding:11px 14px;gap:10px}
+    .float-bar .fb-text span{display:none}
+    .float-bar .fb-text strong{font-size:.9rem}
+    .float-bar .fb-btn{font-size:.88rem;padding:10px 16px}
+    .mobile-cta{display:none!important}
   }
 </style>
 </head>
@@ -556,6 +578,18 @@
 <!-- mobile sticky CTA -->
 <div class="mobile-cta"><a href="#apply" class="btn">무료 파일럿 신청하기 →</a></div>
 
+<!-- floating strip banner -->
+<div class="float-bar" id="floatBar">
+  <div class="fb-text">
+    <strong>사료빈 잔량으로 배송을 미리 계획하세요</strong>
+    <span>초기 비용 없이 일부 농가에 먼저 적용 · 영업일 1일 내 연락</span>
+  </div>
+  <div class="fb-right">
+    <a href="#apply" class="fb-btn">지금 상담하기 →</a>
+    <button class="fb-close" id="floatClose" aria-label="닫기">×</button>
+  </div>
+</div>
+
 <script>
 const ENDPOINT = ""; // Apps Script /exec URL 삽입 예정
 
@@ -619,6 +653,34 @@ form.addEventListener("submit", async function(e) {
     alert("전송 중 문제가 발생했습니다. 잠시 후 다시 시도하거나 02-6242-4545로 연락 주세요.");
   }
 });
+
+// floating strip banner
+(function(){
+  const bar = document.getElementById('floatBar');
+  const closeBtn = document.getElementById('floatClose');
+  let closed = false;
+
+  function checkScroll(){
+    if(closed) return;
+    bar.classList.toggle('visible', window.scrollY > 500);
+  }
+
+  window.addEventListener('scroll', checkScroll, {passive:true});
+
+  closeBtn.addEventListener('click', function(){
+    closed = true;
+    bar.classList.remove('visible');
+  });
+
+  const applySection = document.getElementById('apply');
+  if(applySection){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!closed) bar.classList.toggle('visible', !e.isIntersecting && window.scrollY > 500);
+      });
+    }, {threshold:0.2}).observe(applySection);
+  }
+})();
 
 // 입력 시 에러 즉시 해제
 ["fname","fphone","femail","fcompany","ftitle"].forEach(id => {
