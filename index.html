@@ -186,6 +186,7 @@
 
   /* Solution split */
   .sol-split{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+  .sol-visual{position:-webkit-sticky;position:sticky;top:80px;align-self:start}
   .sol-screens{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
   .sol-screens img{border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow);width:100%}
   .sol-screens img.wide{grid-column:1/-1;height:160px;object-fit:cover;object-position:top}
@@ -229,6 +230,7 @@
     .pain-photo-wrap{order:-1}
     .pain-device-badge{right:12px}
     .sol-split{grid-template-columns:1fr}
+    .sol-visual{position:static;top:auto}
     .effect-banner{flex-direction:column;gap:20px}
     .effect-banner img{width:100%;max-width:280px;margin:0 auto}
   }
@@ -254,6 +256,7 @@
     .pain-device-badge{right:8px;padding:10px 12px}
     .pain-device-badge img{height:40px}
     .sol-screens img.wide{height:120px}
+    .stp .stp-img{height:90px}
     .effect-banner{padding:24px 20px}
     .float-bar{padding:11px 14px;gap:10px}
     .float-bar .fb-text span{display:none}
@@ -344,11 +347,11 @@
           <div class="stp"><div class="num">2</div><h4>잔량 자동 수집</h4><p>장비가 주기적으로 잔량을 측정해 FMC·Myfeed로 자동 전송합니다.</p><img class="stp-img" src="assets/step2_raw.jpg" alt="IoT 센서 데이터 자동 수집" loading="lazy" /></div>
           <div class="stp"><div class="num">3</div><h4>부족 농가 선별·알림</h4><p>기준 이하 농가를 자동 표시하고 담당자에게 알림을 보냅니다.</p><img class="stp-img" src="assets/app_alert.webp" alt="부족 농가 알림 화면" loading="lazy" style="object-position:50% 30%" /></div>
           <div class="stp"><div class="num">4</div><h4>사전 대응·계획 배송</h4><p>부족 예상 농가에 먼저 연락하거나 기존 배송에 포함해 대응합니다.</p><img class="stp-img" src="assets/app_dispatch.webp" alt="배차·계획 배송 화면" loading="lazy" style="object-position:50% 10%" /></div>
-          <div class="stp"><div class="num">5</div><h4>운영 개선·패턴 분석</h4><p>데이터가 쌓일수록 소비 패턴·주문 주기를 파악해 배송 정확도를 높입니다.</p><img class="stp-img" src="assets/step5_raw.jpg" alt="운영 데이터 분석 화면" loading="lazy" /></div>
+          <div class="stp"><div class="num">5</div><h4>운영 개선·패턴 분석</h4><p>데이터가 쌓일수록 소비 패턴·주문 주기를 파악해 배송 정확도를 높입니다.</p><img class="stp-img" src="assets/web_dashboard.webp" alt="운영 데이터 분석 대시보드" loading="lazy" style="object-position:50% 20%" /></div>
         </div>
       </div>
       <!-- 우: 앱 화면 4장 그리드 -->
-      <div>
+      <div class="sol-visual">
         <div class="sol-screens">
           <img src="assets/web_dashboard.webp" alt="웹 대시보드 — 농가별 잔량 현황" loading="lazy" class="wide" />
           <img src="assets/app_detail.webp" alt="앱 — 사료빈 상세" loading="lazy" />
