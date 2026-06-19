@@ -112,6 +112,8 @@
   .pf img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:14px}
   .stp .stp-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:12px}
   .feat .card .shot{height:240px}
+  /* SVG 일러스트는 잘림 방지를 위해 contain + 연한 배경(다이어그램/텍스트 보존) */
+  .card .shot[src$=".svg"],.dom-img[src$=".svg"],.gal img[src$=".svg"],.pf img[src$=".svg"]{object-fit:contain;background:var(--mist);padding:12px}
 
   /* gallery */
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:36px}
