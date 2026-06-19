@@ -18,8 +18,8 @@
   <rect x="220" y="60" width="160" height="46" rx="14" fill="#87B570"/>
   <rect x="220" y="88" width="160" height="18" fill="#87B570"/>
   <text x="300" y="87" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#ffffff">효과 추적</text>
-  <rect x="244" y="185" width="22" height="40" rx="4" fill="#E05656" opacity=".7"/>
-  <rect x="272" y="175" width="22" height="50" rx="4" fill="#E05656" opacity=".7"/>
+  <rect x="244" y="185" width="22" height="40" rx="4" fill="#f5a623" opacity=".7"/>
+  <rect x="272" y="175" width="22" height="50" rx="4" fill="#f5a623" opacity=".7"/>
   <rect x="300" y="155" width="22" height="70" rx="4" fill="#F5A623" opacity=".7"/>
   <rect x="328" y="135" width="22" height="90" rx="4" fill="#87B570"/>
   <path d="M244,188 Q280,165 340,138" fill="none" stroke="#3F6B33" stroke-width="2.5" stroke-dasharray="5,3"/>

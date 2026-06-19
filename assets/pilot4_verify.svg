@@ -12,8 +12,8 @@
   <line x1="50" y1="92" x2="350" y2="92" stroke="#B7D2A9" stroke-width="1" opacity=".5"/>
   <line x1="50" y1="132" x2="350" y2="132" stroke="#B7D2A9" stroke-width="1" opacity=".5"/>
   <!-- Before bars (left, red/orange) - "당일주문" -->
-  <rect x="80" y="82" width="34" height="98" rx="4" fill="#E05656" opacity=".7"/>
-  <rect x="140" y="72" width="34" height="108" rx="4" fill="#E05656" opacity=".7"/>
+  <rect x="80" y="82" width="34" height="98" rx="4" fill="#f5a623" opacity=".7"/>
+  <rect x="140" y="72" width="34" height="108" rx="4" fill="#f5a623" opacity=".7"/>
   <!-- After bars (right, green) - lower count -->
   <rect x="210" y="122" width="34" height="58" rx="4" fill="#87B570"/>
   <rect x="270" y="112" width="34" height="68" rx="4" fill="#87B570"/>
@@ -21,8 +21,8 @@
   <path d="M170,60 Q200,90 230,100" fill="none" stroke="#3F6B33" stroke-width="2.5" stroke-dasharray="5,3"/>
   <polygon points="228,95 236,106 218,106" fill="#3F6B33" opacity=".7"/>
   <!-- Labels -->
-  <text x="97" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#E05656">도입전</text>
-  <text x="157" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#E05656">도입전</text>
+  <text x="97" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#f5a623">도입전</text>
+  <text x="157" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#f5a623">도입전</text>
   <text x="227" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#3F6B33">1개월</text>
   <text x="287" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#3F6B33">2개월</text>
   <text x="200" y="215" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#3F6B33">당일 주문 감소 추이</text>
