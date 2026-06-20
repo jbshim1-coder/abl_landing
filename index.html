@@ -230,10 +230,11 @@
 
   /* floating strip banner */
   .float-bar{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--green-deep);color:#fff;
-    padding:15px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:15px 56px;display:flex;align-items:center;justify-content:center;gap:24px;
     box-shadow:0 -4px 28px rgba(63,107,51,.30);
     transform:translateY(110%);transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
   .float-bar.visible{transform:translateY(0)}
+  .float-bar .fb-text{text-align:center}
   .float-bar .fb-text strong{display:block;font-size:1rem;font-weight:700}
   .float-bar .fb-text span{font-size:.84rem;color:var(--green-light);margin-top:2px;display:block}
   .float-bar .fb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
@@ -241,7 +242,8 @@
     padding:11px 24px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;
     text-decoration:none;display:inline-flex;align-items:center;transition:.18s}
   .float-bar .fb-btn:hover{background:var(--mist)}
-  .float-bar .fb-close{background:transparent;border:none;color:rgba(255,255,255,.55);
+  .float-bar .fb-close{position:absolute;right:18px;top:50%;transform:translateY(-50%);
+    background:transparent;border:none;color:rgba(255,255,255,.55);
     font-size:1.5rem;cursor:pointer;padding:4px 6px;line-height:1;transition:.15s;flex-shrink:0}
   .float-bar .fb-close:hover{color:#fff}
 
@@ -287,7 +289,8 @@
     .sol-screens img.wide{height:120px}
     .stp .stp-img{height:90px}
     .effect-banner{padding:24px 20px}
-    .float-bar{padding:11px 14px;gap:10px}
+    .float-bar{padding:11px 40px;gap:10px}
+    .float-bar .fb-close{right:8px}
     .float-bar .fb-text span{display:none}
     .float-bar .fb-text strong{font-size:.9rem}
     .float-bar .fb-btn{font-size:.88rem;padding:10px 16px}
