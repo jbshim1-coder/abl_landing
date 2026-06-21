@@ -625,12 +625,6 @@
           <textarea id="fmessage" name="message" placeholder="궁금한 점이나 요청 사항을 자유롭게 적어주세요"></textarea>
         </div>
 
-        <label class="agree">
-          <input type="checkbox" id="fagree" name="agree" required />
-          <span><b>(필수)</b> 파일럿 상담을 위한 개인정보(성명·연락처·이메일·회사·직함) 수집·이용에 동의합니다.</span>
-        </label>
-        <div class="err" data-for="fagree" style="margin-top:-10px;margin-bottom:14px">개인정보 수집·이용 동의가 필요합니다.</div>
-
         <button type="submit" class="btn" id="submitBtn">파일럿 신청하기</button>
       </form>
 
@@ -700,8 +694,7 @@ const fields = [
   { id: "fphone",   valid: () => validPhone(form.fphone.value) },
   { id: "femail",   valid: () => validEmail(form.femail.value) },
   { id: "fcompany", valid: () => form.fcompany.value.trim() !== "" },
-  { id: "ftitle",   valid: () => form.ftitle.value.trim() !== "" },
-  { id: "fagree",   valid: () => form.fagree.checked }
+  { id: "ftitle",   valid: () => form.ftitle.value.trim() !== "" }
 ];
 
 form.addEventListener("submit", async function(e) {
@@ -775,7 +768,6 @@ form.addEventListener("submit", async function(e) {
   const el = document.getElementById(id);
   if (el) el.addEventListener("input", () => showErr(id, false));
 });
-form.fagree.addEventListener("change", () => showErr("fagree", !form.fagree.checked));
 </script>
 </body>
 </html>
