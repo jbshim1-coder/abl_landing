@@ -107,15 +107,16 @@
   .stp p{font-size:.88rem;color:var(--gray)}
 
   /* feature with image */
-  .feat{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-top:36px}
-  .feat>.card{flex:1 1 300px;max-width:341px}
+  .feat{display:grid;grid-template-columns:1fr;gap:20px;margin-top:36px}
+  .feat>.card{display:grid;grid-template-columns:320px 1fr;gap:30px;align-items:center;padding:20px 28px}
+  .feat>.card h4{margin-bottom:8px}
   .feat-banner{background:var(--green-deep);color:#fff;border-radius:16px;padding:38px 32px;text-align:center;margin-top:28px;box-shadow:0 8px 24px rgba(46,77,39,.18)}
   .feat-banner h3{color:#fff;font-size:1.65rem;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
   .feat-banner p{color:#dff0d4;font-size:1.1rem;line-height:1.6;max-width:680px;margin:0 auto;word-break:keep-all;text-wrap:balance}
   .card .shot{border-radius:12px;border:1px solid var(--line);margin-bottom:16px;width:100%;height:280px;object-fit:cover;object-position:center}
   .pf img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:14px}
   .stp .stp-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:12px}
-  .feat .card .shot{height:300px}
+  .feat .card .shot{height:180px;margin-bottom:0}
   /* SVG 일러스트는 잘림 방지를 위해 contain + 연한 배경(다이어그램/텍스트 보존) */
   .card .shot[src$=".svg"],.dom-img[src$=".svg"],.gal img[src$=".svg"],.pf img[src$=".svg"]{object-fit:contain;background:var(--mist);padding:12px}
 
@@ -265,7 +266,8 @@
   @media(max-width:980px){
     .hero-grid{grid-template-columns:1fr;gap:30px}
     .hero-visual{order:-1}
-    .domino,.g4,.g3,.feat,.gallery,.pilot-flow,.photo-grid-3,.photo-grid-2,.trust4{grid-template-columns:1fr 1fr}
+    .domino,.g4,.g3,.gallery,.pilot-flow,.photo-grid-3,.photo-grid-2,.trust4{grid-template-columns:1fr 1fr}
+    .feat>.card{grid-template-columns:240px 1fr;gap:22px}
     .pilot-flow5 .photo-card{min-height:210px}
     .steps{grid-template-columns:1fr 1fr 1fr}
     .dom:not(:last-child)::after{display:none}
@@ -285,6 +287,8 @@
     section{padding:54px 0}
     .nav .btn{display:none}
     .g3,.g2,.domino,.g4,.feat,.gallery,.steps,.pilot-flow,.photo-grid-3,.photo-grid-2{grid-template-columns:1fr}
+    .feat>.card{grid-template-columns:1fr;gap:14px;padding:18px}
+    .feat .card .shot{height:200px}
     .pilot-flow5 .photo-card .pc-body{padding:24px 22px 24px}
     .pilot-flow5 .photo-card h4{font-size:1.3rem}
     .photo-card{min-height:260px}
