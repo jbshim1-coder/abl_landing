@@ -748,6 +748,23 @@ form.addEventListener("submit", async function(e) {
     bar.classList.remove('visible');
   });
 
+  // 플로팅 '지금 상담하기' → 섹션 상단이 아니라 실제 입력 필드까지 정확히 스크롤
+  const fbBtn = document.querySelector('.fb-btn');
+  if(fbBtn){
+    fbBtn.addEventListener('click', function(ev){
+      const formEl = document.getElementById('leadForm');
+      if(!formEl) return; // 폼 없으면 기본 앵커 동작
+      ev.preventDefault();
+      const header = document.querySelector('header.nav');
+      const gap = (header ? header.offsetHeight : 0) + 24;
+      const y = formEl.getBoundingClientRect().top + window.pageYOffset - gap;
+      window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+      // 스크롤이 끝난 뒤 첫 칸에 포커스(스크롤 도중 키보드가 튀지 않도록 지연 + preventScroll)
+      const first = document.getElementById('fname');
+      if(first) setTimeout(() => first.focus({ preventScroll: true }), 520);
+    });
+  }
+
   const applySection = document.getElementById('apply');
   if(applySection){
     new IntersectionObserver(function(entries){
