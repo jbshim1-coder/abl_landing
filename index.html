@@ -41,6 +41,7 @@
   html{scroll-behavior:smooth}
   body{font-family:"Pretendard",system-ui,-apple-system,"Apple SD Gothic Neo",sans-serif;color:var(--ink);line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-feature-settings:"ss01";letter-spacing:-.01em;font-size:18px}
   img{max-width:100%;display:block}
+  h1,h2,h3,h4,h5,p,li,span{word-break:keep-all;overflow-wrap:break-word}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
@@ -70,7 +71,7 @@
   @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
   /* Header */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
   .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--green-deep);font-size:1.15rem}
   .nav-logo img{height:26px;width:auto}
@@ -199,8 +200,6 @@
   .field textarea{min-height:96px;resize:vertical}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-  .agree{display:flex;align-items:flex-start;gap:9px;font-size:.9rem;color:var(--gray);margin:6px 0 18px}
-  .agree input{margin-top:4px;width:18px;height:18px;min-width:18px;cursor:pointer;accent-color:var(--green)}
   .err{color:#d9534f;font-size:.82rem;margin-top:5px;display:none}
   .form-card .btn{width:100%;justify-content:center;font-size:1.08rem;padding:16px}
   .form-note{font-size:.82rem;color:var(--gray);text-align:center;margin-top:12px}
@@ -258,8 +257,6 @@
   .effect-banner strong{color:#fff;font-size:1.18rem;display:block;margin-bottom:8px}
   .effect-banner img{width:180px;border-radius:12px;flex-shrink:0}
 
-  /* mobile sticky CTA */
-  .mobile-cta{display:none}
 
   /* floating strip banner */
   .float-bar{position:fixed;bottom:0;left:0;right:0;z-index:80;background:var(--green-deep);color:#fff;
@@ -319,9 +316,6 @@
     .trust4 .tb span{font-size:.86rem}
     .form-card{padding:26px 20px}
     .phone{width:100%;max-width:300px}
-    .mobile-cta{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -4px 20px rgba(0,0,0,.08)}
-    .mobile-cta .btn{width:100%;justify-content:center;font-size:1rem;padding:14px}
-    body{padding-bottom:74px}
     .trust .wrap{font-size:.88rem;gap:8px 14px}
     .hero h1{font-size:clamp(1.7rem,7vw,2.4rem)}
     .domino{gap:10px}
@@ -340,7 +334,6 @@
     .float-bar .fb-text span{display:none}
     .float-bar .fb-text strong{font-size:.9rem}
     .float-bar .fb-btn{font-size:.88rem;padding:10px 16px}
-    .mobile-cta{display:none!important}
   }
 </style>
 </head>
@@ -657,8 +650,6 @@
   <div class="wrap foot-bottom">© 2026 AimBe Lab. All rights reserved. · <a href="https://www.aimbelab.com/">www.aimbelab.com</a></div>
 </footer>
 
-<!-- mobile sticky CTA -->
-<div class="mobile-cta"><a href="#apply" class="btn">무료 파일럿 신청하기 →</a></div>
 
 <!-- floating strip banner -->
 <div class="float-bar" id="floatBar">
