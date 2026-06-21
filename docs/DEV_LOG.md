@@ -1,3 +1,10 @@
+### [2026-06-21 18:55] 구글시트 연동 전송 형식 수정(FormData→URLSearchParams)
+
+- 실제 폼 제출이 시트에 기록되지 않던 문제 해결. 원인: 폼이 FormData(multipart) 형식으로 보내면 구글 Apps Script가 값을 못 읽어 빈 줄로 들어감
+- 전송 방식을 URLSearchParams(x-www-form-urlencoded)로 변경 → 성함/연락처/이메일/회사/직함/문의내용이 정상 기록되도록 수정
+- 서버(웹앱)는 정상이며(GET 응답 확인), 코드 형식 문제였음
+- [완료]
+
 ### [2026-06-21 18:35] 구글시트 실시간 DB 연동 완료
 
 - 사용자가 배포한 Apps Script 웹앱 주소(/exec)를 index.html ENDPOINT에 삽입 → 파일럿 신청 폼 제출이 구글시트에 실시간 기록됨

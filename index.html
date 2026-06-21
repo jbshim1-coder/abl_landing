@@ -705,7 +705,11 @@ form.addEventListener("submit", async function(e) {
   submitBtn.disabled = true;
   submitBtn.textContent = "전송 중...";
 
-  const data = new FormData(form);
+  const data = new URLSearchParams();
+  ["name", "phone", "email", "company", "title", "message"].forEach(k => {
+    const el = form.elements.namedItem(k);
+    if (el) data.append(k, el.value);
+  });
   data.append("submittedAt", new Date().toISOString());
 
   try {
