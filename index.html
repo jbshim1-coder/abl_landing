@@ -107,7 +107,11 @@
   .stp p{font-size:.88rem;color:var(--gray)}
 
   /* feature with image */
-  .feat{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:36px}
+  .feat{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-top:36px}
+  .feat>.card{flex:1 1 300px;max-width:341px}
+  .feat-banner{background:var(--green-deep);color:#fff;border-radius:16px;padding:38px 32px;text-align:center;margin-top:28px;box-shadow:0 8px 24px rgba(46,77,39,.18)}
+  .feat-banner h3{color:#fff;font-size:1.65rem;font-weight:800;margin-bottom:10px;letter-spacing:-.01em}
+  .feat-banner p{color:#dff0d4;font-size:1.1rem;line-height:1.6;max-width:680px;margin:0 auto}
   .card .shot{border-radius:12px;border:1px solid var(--line);margin-bottom:16px;width:100%;height:280px;object-fit:cover;object-position:center}
   .pf img{width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:14px}
   .stp .stp-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:12px}
@@ -445,7 +449,10 @@
       <div class="card"><img class="shot" src="assets/app_alert.webp" alt="부족 가능 농가 사전 알림 화면" loading="lazy" /><h4>③ 부족 가능 농가 사전 알림</h4><p>임계치 이하로 떨어지면 자동으로 알림을 보냅니다. 바닥나기 전에 배송 일정을 조율합니다.</p></div>
       <div class="card"><img class="shot" src="assets/app_dispatch.webp" alt="계획 주문·배송 전환 화면" loading="lazy" /><h4>④ 계획 주문 전환 지원</h4><p>잔량 추이·소비 패턴으로 배송 시점을 예측해 당일 주문 비중을 줄입니다.</p></div>
       <div class="card"><img class="shot" src="assets/install_site.webp" alt="설치 이후 현장 운영 관리" loading="lazy" /><h4>⑤ 설치 이후 운영 관리</h4><p>장비 설치로 끝나지 않습니다. 데이터 안정성, 당일 주문 감소 효과, 농가별 개선 여부까지 함께 점검합니다.</p></div>
-      <div class="card" style="background:var(--green-deep);color:#fff;display:flex;flex-direction:column;justify-content:center"><h4 style="color:#fff">감(感)에서 데이터로</h4><p style="color:#dff0d4">"감에 의존하는 방식"에서 "데이터 기반의 사전 관리"로. 사료 주문과 배송 운영의 방식이 달라집니다.</p></div>
+    </div>
+    <div class="feat-banner">
+      <h3>감(感)에서 데이터로</h3>
+      <p>"감에 의존하는 방식"에서 "데이터 기반의 사전 관리"로. 사료 주문과 배송 운영의 방식이 달라집니다.</p>
     </div>
   </div>
 </section>
